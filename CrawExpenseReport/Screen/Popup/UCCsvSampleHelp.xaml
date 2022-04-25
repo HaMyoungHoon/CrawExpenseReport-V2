@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="CrawExpenseReport.Screen.Popup.UCCsvSampleHelp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CrawExpenseReport.Screen.Popup"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="15"
+             TextOptions.TextFormattingMode="Ideal" 
+             TextOptions.TextRenderingMode="Auto"
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" MaxHeight="700">
+            <Grid>
+                <StackPanel Orientation="Vertical" Margin="5" Visibility="{Binding IsNewExcel, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_New/001.png" MaxWidth="800"/>
+                    <TextBlock Text="sample.csv를 엑셀 파일로 열어주거나 excel을 켭니다." HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_New/002.png" MaxWidth="800"/>
+                    <TextBlock Text="데이터 탭 -> 텍스트/CSV를 선택합니다." HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_New/003.png" MaxWidth="800"/>
+                    <TextBlock Text="sample.csv를 선택합니다." HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_New/004.png" MaxWidth="800"/>
+                    <TextBlock Text="데이터를 확인 후 로드 버튼을 누릅니다." HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_New/005.png" MaxWidth="800"/>
+                    <TextBlock Text="데이터를 수정합니다.&#10;제목,회사,사업장은 첫줄에 하나씩만 입력합니다." HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5" Visibility="{Binding IsOldExcel, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/001.png" MaxWidth="800"/>
+                    <TextBlock Text="데이터 탭의 텍스트를 선택합니다." HorizontalAlignment="Center"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/002.png" MaxWidth="800"/>
+                    <TextBlock Text="sample.csv를 선택합니다." HorizontalAlignment="Center"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/003.png" MaxWidth="800"/>
+                    <TextBlock Text="구분 기호가 분리됨을 누른뒤 다음을 클릭합니다." HorizontalAlignment="Center"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/004.png" MaxWidth="800"/>
+                    <TextBlock Text="쉼표만 선택한 뒤 다음을 클릭합니다.." HorizontalAlignment="Center"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/005.png" MaxWidth="800"/>
+                    <TextBlock Text="열 데이터 서식을 텍스트로 지정한 뒤 마침을 누릅니다." HorizontalAlignment="Center"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/006.png" MaxWidth="800"/>
+                    <Image Source="pack://siteoforigin:,,,/Files/CsvSampleHelp_Old/007.png" MaxWidth="800"/>
+                    <TextBlock Text="이제 데이터를 수정합니다.&#10;제목,회사,사업장은 첫줄에 하나씩만 입력합니다." HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="btnCancel" Content="닫기" Margin="5"
+                Command="{x:Static md:DialogHost.CloseDialogCommand}" />
+            <Button Content="앗 버전이 다른데요?" Margin="5" Background="{StaticResource PrimaryHueDarkBrush}"
+                    Command="{Binding VersionChange}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

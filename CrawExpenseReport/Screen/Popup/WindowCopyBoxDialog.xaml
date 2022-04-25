@@ -1,0 +1,41 @@
+﻿<Window x:Class="CrawExpenseReport.Screen.Popup.WindowCopyBoxDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrawExpenseReport.Screen.Popup"
+        mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="11"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Width="570" Height="200" MinWidth="500" MinHeight="200" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="5">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="복사 타입" Margin="5" Height="25" Width="150" />
+                <ComboBox ItemsSource="{Binding TypeList}" SelectedItem="{Binding SelectedTypeItem}" Margin="5" Width="300" ToolTip="임시 저장함, 기안 완료함 선택"/>
+                <Button Content="저장" Command="{Binding SaveType}" Margin="5" Height="25"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="복사 대상이 될 문서 주소" Margin="5" Height="25" Width="150" />
+                <TextBox Text="{Binding Url}" Margin="5" Height="25" Width="300"/>
+                <Button Content="저장" Command="{Binding SaveUrl}" Margin="5" Height="25"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="결과 : " Height="25"/>
+                <Label Content="{Binding ResultText}" Height="25" Width="450"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Row="2" x:Name="btnConfirm" Content="확인" Visibility="{Binding IsConfirmVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    HorizontalAlignment="Left" Margin="16,16,16,0" Command="{Binding ConfirmCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+        <Button Grid.Row="2" x:Name="btnCancel" Content="취소" Background="{StaticResource SecondaryHueMidBrush}" 
+                    HorizontalAlignment="Right" Margin="16,16,16,0" Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+    </Grid>
+</Window>

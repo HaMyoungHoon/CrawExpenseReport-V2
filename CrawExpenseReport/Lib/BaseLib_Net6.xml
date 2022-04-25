@@ -1,0 +1,425 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BaseLib_Net6</name>
+    </assembly>
+    <members>
+        <member name="T:BaseLib_Net6.FFileParser">
+            <summary>file parser class</summary>
+        </member>
+        <member name="T:BaseLib_Net6.FFileParser.FILE_TYPE">
+            <summary>
+            File Type
+            </summary>
+        </member>
+        <member name="F:BaseLib_Net6.FFileParser.FILE_TYPE.INI">
+            <summary>.ini file</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FFileParser.FILE_TYPE.XML">
+            <summary>.xml file</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.#ctor(System.String,BaseLib_Net6.FFileParser.FILE_TYPE)">
+            <summary>Construct</summary>
+            <param name="filePath">Default File Path</param>
+            <param name="fileType">File Type</param>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.CreateFile(System.String,System.String,System.String)">
+            <summary>
+            Create Ini File
+            </summary>
+            <param name="section">Xml : Node, Ini : Root Key</param>
+            <param name="value">Xml : Value, Ini : None</param>
+            <param name="filePath">Default File Path</param>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.SetFilePath(System.String,BaseLib_Net6.FFileParser.FILE_TYPE)">
+            <summary>
+            Re Setting File Path, File Type
+            </summary>
+            <param name="filePath">Default File Path</param>
+            <param name="fileType">File Type</param>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.GetString(System.String,System.String,System.String)">
+            <summary>
+            GetString("Section,Key");
+            GetString("Node,ChildNode,ChildNode...");
+            </summary>
+            <param name="cmd">ref to summary</param>
+            <param name="defValue">default value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>string type</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.GetInt(System.String,System.Int32,System.String)">
+            <summary>
+            GetString("Section,Key");
+            GetString("Node,ChildNode,ChildNode...");
+            </summary>
+            <param name="cmd">ref to summary</param>
+            <param name="defValue">default value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>int type</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.GetDouble(System.String,System.Double,System.String)">
+            <summary>
+            GetString("Section,Key");
+            GetString("Node,ChildNode,ChildNode...");
+            </summary>
+            <param name="cmd">ref to summary</param>
+            <param name="defValue">default value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>double type</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.SetString(System.String,System.String,System.String)">
+            <summary>
+            SetString("Section,Key");
+            SetString("Node,ChildNode,ChildeNode...);
+            </summary>
+            <param name="cmd">ref summary</param>
+            <param name="value">setting value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>false : fail</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.SetInt(System.String,System.Int32,System.String)">
+            <summary>
+            SetString("Section,Key");
+            SetString("Node,ChildNode,ChildeNode...);
+            </summary>
+            <param name="cmd">ref summary</param>
+            <param name="value">setting value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>false : fail</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FFileParser.SetDouble(System.String,System.Double,System.String)">
+            <summary>
+            SetString("Section,Key");
+            SetString("Node,ChildNode,ChildeNode...);
+            </summary>
+            <param name="cmd">ref summary</param>
+            <param name="value">setting value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>false : fail</returns>
+        </member>
+        <member name="T:BaseLib_Net6.FIniParser">
+            <summary>ini parser class</summary>
+        </member>
+        <member name="P:BaseLib_Net6.FIniParser.FilePath">
+            <summary>current file path</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FIniParser.#ctor(System.String)">
+            <summary>construct</summary>
+            <param name="filePath">Default File Path</param>
+        </member>
+        <member name="T:BaseLib_Net6.FPrintf">
+            <summary>class for Log</summary>
+        </member>
+        <member name="T:BaseLib_Net6.FPrintf.PrintCallbackFunc">
+            <summary>delegate for Callback Function</summary>
+            <param name="data">Log Data</param>
+        </member>
+        <member name="P:BaseLib_Net6.FPrintf._filePath">
+            <summary>Log Path</summary>
+        </member>
+        <member name="P:BaseLib_Net6.FPrintf._fileName">
+            <summary>Log File Name</summary>
+        </member>
+        <member name="P:BaseLib_Net6.FPrintf._expiryDate">
+            <summary>Log delete Date</summary>
+        </member>
+        <member name="P:BaseLib_Net6.FPrintf._saveMode">
+            <summary>refer eMODE</summary>
+        </member>
+        <member name="T:BaseLib_Net6.FPrintf.eMODE">
+            <summary>Save Mode</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FPrintf.eMODE.SORT_DATETIME_FILE">
+            <summary>_filePath -> _fileName_yyyy-MM-dd</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FPrintf.eMODE.SORT_DATETIME_FOLDER">
+            <summary>_filePath -> yyyy-MM-dd -> _fileName</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FPrintf.#ctor(System.String,System.String,BaseLib_Net6.FPrintf.eMODE,BaseLib_Net6.FPrintf.PrintCallbackFunc,System.UInt32)">
+            <summary>Class generator</summary>
+            <param name="filePath">log path</param>
+            <param name="fileName">log file Name</param>
+            <param name="saveMode">save mode</param>
+            <param name="printCallbackFunc">set callback function</param>
+            <param name="expiryDate">delete file</param>
+        </member>
+        <member name="M:BaseLib_Net6.FPrintf.Finalize">
+            <summary>Class destructor</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FPrintf.NotUsePrintf(System.Boolean)">
+            <summary>can use config setting</summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:BaseLib_Net6.FPrintf.PRINT_F(System.String,System.Object[])">
+            <summary>Save Log</summary>
+            <param name="data">formated string</param>
+            <param name="ps">params</param>
+        </member>
+        <member name="M:BaseLib_Net6.FPrintf.PRINT_F(System.String)">
+            <summary>Save Log</summary>
+            <param name="data">string type data</param>
+        </member>
+        <member name="M:BaseLib_Net6.FPrintf.PRINT_F(System.Char[])">
+            <summary>Save Log</summary>
+            <param name="data">char array type data</param>
+        </member>
+        <member name="T:BaseLib_Net6.FThread">
+            <summary>To relieve the annoyance of thread management.</summary>
+        </member>
+        <member name="T:BaseLib_Net6.FThread.eTHREAD">
+            <summary>Number and Order of Threads</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH1">
+            <summary>Thread 1</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH2">
+            <summary>Thread 2</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH3">
+            <summary>Thread 3</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH4">
+            <summary>Thread 4</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH5">
+            <summary>Thread 5</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH6">
+            <summary>Thread 6</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH7">
+            <summary>Thread 7</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH8">
+            <summary>Thread 8</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH9">
+            <summary>Thread 9</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH10">
+            <summary>Thread 10</summary>
+        </member>
+        <member name="F:BaseLib_Net6.FThread.eTHREAD.TH_COUNT">
+            <summary>Thread Count</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.#ctor">
+            <summary>FThread generator</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.Finalize">
+            <summary>FThread destructor</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread1">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread2">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread3">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread4">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread5">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread6">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread7">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread8">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread9">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PreThread10">
+            <remarks>The first run when the thread is created.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread1">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread2">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread3">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread4">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread5">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread6">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread7">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread8">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread9">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PostThread10">
+            <remarks>The last time the thread is closed.</remarks>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread1">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread2">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread3">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread4">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread5">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread6">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread7">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread8">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread9">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ProcThread10">
+            <returns>true : infinite, false : one time</returns>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.SetThreadInterval(BaseLib_Net6.FThread.eTHREAD,System.Int32)">
+            <summary>Changed the interval of the thread corresponding to the enum value.
+            Default : 10ms
+            </summary>
+            <param name="threadEnum">refer to enum eTHREAD</param>
+            <param name="interval">unit : ms</param>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.CreateThread(BaseLib_Net6.FThread.eTHREAD)">
+            <summary>Create and Run Thread</summary>
+            <param name="threadEnum">refer to enum eTHREAD</param>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.CloseThread(BaseLib_Net6.FThread.eTHREAD)">
+            <summary>Close Thread</summary>
+            <param name="threadEnum">refer to enum eTHREAD</param>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.PauseThread(BaseLib_Net6.FThread.eTHREAD)">
+            <summary>Puase Thread</summary>
+            <param name="threadEnum">refer to enum eTHREAD</param>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.ReStartThread(BaseLib_Net6.FThread.eTHREAD)">
+            <summary>
+            pause and restart
+            </summary>
+            <param name="threadEnum">refer to enum eTHREAD</param>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.WaitThreadTerminate(BaseLib_Net6.FThread.eTHREAD)">
+            <summary>After closing the thread, wait for an end.</summary>
+            <param name="threadEnum">refer to enum eTHREAD</param>
+        </member>
+        <member name="M:BaseLib_Net6.FThread.IsAliveThread(BaseLib_Net6.FThread.eTHREAD)">
+            <param name="threadEnum">refer to enum eTHREAD</param>
+            <returns>return true if thread is alive.</returns>
+        </member>
+        <member name="T:BaseLib_Net6.FXmlParser">
+            <summary>xml parser class</summary>
+        </member>
+        <member name="P:BaseLib_Net6.FXmlParser.FilePath">
+            <summary>current file path</summary>
+        </member>
+        <member name="M:BaseLib_Net6.FXmlParser.#ctor(System.String)">
+            <summary>construct</summary>
+            <param name="filePath">Default File Path</param>
+        </member>
+        <member name="M:BaseLib_Net6.FXmlParser.BaseLib_Net6#IFParser#CreateFile(System.String,System.String,System.String)">
+            <summary>create xml file</summary>
+            <param name="cmd">node,node,node...</param>
+            <param name="value">literally</param>
+            <param name="filePath">null : construct path</param>
+            <returns>false : fail</returns>
+        </member>
+        <member name="T:BaseLib_Net6.IFParser">
+            <summary>parser interface</summary>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.CreateFile(System.String,System.String,System.String)">
+            <summary>
+            Create Ini File
+            </summary>
+            <param name="section">Xml : Node, Ini : Root Key</param>
+            <param name="value">Xml : Value, Ini : None</param>
+            <param name="filePath">Default File Path</param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.SetFilePath(System.String)">
+            <summary>
+            Re Setting File Path, File Type
+            </summary>
+            <param name="filePath">Default File Path</param>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.GetString(System.String,System.String,System.String)">
+            <summary>
+            GetString("Section,Key");
+            </summary>
+            <param name="cmd">ref to summary</param>
+            <param name="defValue">default value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>string type</returns>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.GetInt(System.String,System.Int32,System.String)">
+            <summary>
+            Getint("Section,Key");
+            </summary>
+            <param name="cmd">ref to summary</param>
+            <param name="defValue">default value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>int type</returns>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.GetDouble(System.String,System.Double,System.String)">
+            <summary>
+            GetDouble("Section,Key");
+            </summary>
+            <param name="cmd">ref to summary</param>
+            <param name="defValue">default value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>double type</returns>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.SetString(System.String,System.String,System.String)">
+            <summary>
+            SetString("Section,Key");
+            </summary>
+            <param name="cmd">ref summary</param>
+            <param name="data">setting value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>false : fail</returns>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.SetInt(System.String,System.Int32,System.String)">
+            <summary>
+            SetInt("Section,Key");
+            </summary>
+            <param name="cmd">ref summary</param>
+            <param name="data">setting value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>false : fail</returns>
+        </member>
+        <member name="M:BaseLib_Net6.IFParser.SetDouble(System.String,System.Double,System.String)">
+            <summary>
+            SetDouble("Section,Key");
+            </summary>
+            <param name="cmd">ref summary</param>
+            <param name="data">setting value</param>
+            <param name="filePath">None : Construct Path</param>
+            <returns>false : fail</returns>
+        </member>
+    </members>
+</doc>
